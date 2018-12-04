@@ -1,0 +1,10 @@
+---
+applications:
+- name: ping-dev
+  instances: 1
+  memory: 256M
+  disk: 256M
+  url:
+    - ${name}.${target-base}
+  stackato:
+    description: "Simple Ping-Pong app for network testing."

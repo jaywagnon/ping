@@ -1,0 +1,22 @@
+{
+  "name": "ping",
+  "version": "1.0.0",
+  "description": "A sample Node.js app using Express 4 for Ping testing",
+  "engines": {
+    "node": "5.10.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "2.4.1",
+    "express": "4.13.3"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
