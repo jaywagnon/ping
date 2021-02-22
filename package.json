@@ -3,20 +3,23 @@
   "version": "1.0.0",
   "description": "A sample Node.js app using Express 4 for Ping testing",
   "engines": {
-    "node": "5.10.x"
+    "node": "15.x"
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start:dev": "nodemon --inspect=0.0.0.0:9251"
   },
   "dependencies": {
-    "ejs": "2.4.1",
-    "express": "4.13.3"
+    "config": "^3.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.15.2",
+    "pino-http": "^5.5.0"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/jw-test-api"
+  }
 }
