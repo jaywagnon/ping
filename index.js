@@ -1,14 +1,16 @@
-var express = require('express');
-var app = express();
+var express = require('express')
+var app = express()
 app.set('trust proxy', true)
+
+const pino = require('pino-http')()
+app.use(pino)
 
 const cors = require('cors')
 app.use(cors())
 
-app.set('port', (process.env.PORT || 9000));
+app.set('port', (process.env.PORT || 9000))
 
 app.get('/ping/v1', (req, res) => {
-  console.log(req)
   res.status(200).json({ ping: 'pong' })
 })
 
