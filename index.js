@@ -10,7 +10,7 @@ app.use(cors())
 
 app.set('port', (process.env.PORT || 9000))
 
-app.get('/ping/v1', (req, res) => {
+app.get('/v1/ping', (req, res) => {
   res.status(200).json({ ping: 'pong' })
 })
 
