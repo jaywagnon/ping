@@ -1,24 +1,26 @@
 var express = require('express')
+const config = require('config')
+
 var app = express()
 app.set('trust proxy', true)
-
-const pino = require('pino-http')()
-app.use(pino)
 
 const cors = require('cors')
 app.use(cors())
 
-app.set('port', (process.env.PORT || 9000))
+const { port } = config;
+app.set('port', port)
 
-app.get('/v1/ping', (req, res) => {
-  res.status(200).json({ ping: 'pong' })
-})
+// Swagger UI documentation
+app.use(require('./docs'))
 
+// Ping-Pong API
+app.use(require('./ping'))
+
+// Catch all other requests and return error
 app.all('*', (req, res) => {
   res.status(503).json({ error: 'Not implemented.'})
 })
 
-const PORT = app.get('port')
-app.listen(PORT, () => {
-  console.log('Node app is running on port', PORT)
+app.listen(port, () => {
+  console.log('Node app is running on port', port)
 })

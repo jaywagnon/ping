@@ -16,7 +16,8 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.15.2",
-    "pino-http": "^5.5.0"
+    "pino-http": "^5.5.0",
+    "swagger-ui-express": "4.1.6"
   },
   "repository": {
     "type": "git",
