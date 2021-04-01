@@ -4,10 +4,34 @@ info:
   description: A small API for testing API Manager replacements.
   version: '1.0'
 
+
+servers:
+  - url: https://pingpong-core-dev.alamoapp.octanner.io/v1
+    description: Testing service
+  - url: https://pingpong-core-dev.alamoapp.octanner.io/v1
+    description: Production service
+
+
+tags:
+  - name: Ping Pong
+    description: A "pong" in response to a "ping".
+
+
+security:
+  - BearerAuth: []
+  - OAuth2_Test:
+    - read
+    - write
+  - OAuth2_Production:
+    - read
+    - write
+
 paths:
   /ping:
     get:
-      summary: Returns a "pong".
+      tags:
+        - Ping Pong
+      summary: Returns a "pong" in response to a "ping".
       description:
         <h3>Returns a JSON response with a "pong".</h3>
       responses:
@@ -16,15 +40,41 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  ping:
-                    type: string
-                    example: 'pong'
+                $ref: '#/components/schemas/PingPongResponse'
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    OAuth2_Test:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://core-qa.octanner.io/sso/oauth/authorize
+          tokenUrl: https://core-qa.octanner.io/sso/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
+            admin: Grants access to admin operations
+        clientCredentials:
+          tokenUrl: https://core-qa.octanner.io/sso/oauth/token
+    OAuth2_Production:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://core.octanner.io/sso/oauth/authorize
+          tokenUrl: https://core.octanner.io/sso/oauth/token
+          scopes:
+            read: Grants read access
+            write: Grants write access
+            admin: Grants access to admin operations
+        clientCredentials:
+          tokenUrl: https://core.octanner.io/sso/oauth/token
+
+
   schemas:
-    PongResponse:
+    PingPongResponse:
       type: object
       properties:
         ping:
