@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  title: Ping-Pong Test API
+  description: A small API for testing API Manager replacements.
+  version: '1.0'
+
+paths:
+  /ping:
+    get:
+      summary: Returns a "pong".
+      description:
+        <h3>Returns a JSON response with a "pong".</h3>
+      responses:
+        '200':
+          description: A JSON response with a "pong".
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ping:
+                    type: string
+                    example: 'pong'
+
+components:
+  schemas:
+    PongResponse:
+      type: object
+      properties:
+        ping:
+          type: string
+          example: 'pong'
