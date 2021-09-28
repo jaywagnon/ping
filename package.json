@@ -11,11 +11,15 @@
     "start:dev": "nodemon --inspect=0.0.0.0:9251"
   },
   "dependencies": {
+    "chalk": "2.4.2",
+    "color": "4.0.1",
     "config": "^3.3.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.15.2",
+    "loglevel": "1.7.1",
+    "loglevel-plugin-prefix": "0.8.4",
     "pino-http": "^5.5.0",
     "swagger-ui-express": "4.1.6"
   },

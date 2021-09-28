@@ -3,6 +3,7 @@ const config = require('config')
 
 var app = express()
 app.set('trust proxy', true)
+app.use(express.json())
 
 const cors = require('cors')
 app.use(cors())
