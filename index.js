@@ -4,6 +4,7 @@ const config = require('config')
 var app = express()
 app.set('trust proxy', true)
 app.use(express.json())
+app.use(express.text())
 
 const cors = require('cors')
 app.use(cors())
